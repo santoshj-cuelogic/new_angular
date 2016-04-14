@@ -1,4 +1,6 @@
-<div ui-view="header"></div>
-<div ui-view="sidebar"></div>
-<div ui-view="content"></div>
-<div ui-view="footer"></div>
+<header ui-view="header"></header>
+<section>
+    <aside ui-view="sidebar" class="nav"></aside>
+    <aside ui-view="content" class="content">Content</aside>
+</section>
+<footer ui-view="footer"></footer>

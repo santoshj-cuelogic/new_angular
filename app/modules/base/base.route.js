@@ -9,7 +9,8 @@
 
         $stateProvider
             .state('base', {
-                url: '/base',
+                url: '',
+                abstract: true,
                 views: {
                     '@': {
                         templateUrl: 'app/modules/base/views/base.html',

@@ -1,0 +1,21 @@
+<div class="container" ng-init="userList()"> 
+    <tab-menu tab-menu-list="subTabMenus"></tab-menu>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th >Image</th>
+                <th >Employee Name </th>
+                <th >Department Name</th>
+                <th >salary</th>                
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="singleUser in getUsers">
+                <th><img height="200" width="200" src='http://localhost:4004/assets/images/blackSpinner.gif' lazy-img="{{singleUser.image}}"></th>
+                <td>{{singleUser.name}}</td>
+                <td>{{singleUser.department}}</td>
+                <td>${{singleUser.salary}}</td>                       
+            </tr>
+        </tbody>        
+    </table>
+</div>
