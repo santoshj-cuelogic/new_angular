@@ -1,17 +1,21 @@
-'use strict';
+(function() {
 
-// Declare app level module which depends on views, and components
-angular
-    .module('kantar', [
-        'ui.router',
-        'ngAnimate',
+    'use strict';
 
-        'login',
-        'base'
-    ])
-    .config(['$urlRouterProvider', '$locationProvider', initializeConfigurationPhase]);
+    // Declare app level module which depends on views, and components
+    angular
+        .module('kantar', [
+            'ui.router',
+            'ngAnimate',
 
-function initializeConfigurationPhase($urlRouterProvider, $locationProvider) {
-    // $locationProvider.html5Mode(true);
-    $urlRouterProvider.otherwise('/login');
-}
+            'login',
+            'base'
+        ])
+        .config(['$urlRouterProvider', '$locationProvider', initializeConfigurationPhase]);
+
+    function initializeConfigurationPhase($urlRouterProvider, $locationProvider) {
+        // $locationProvider.html5Mode(true);
+        $urlRouterProvider.otherwise('/login');
+    }
+
+})();

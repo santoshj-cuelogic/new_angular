@@ -1,26 +1,31 @@
-angular
-    .module('base')
-    .config(['$stateProvider', stateProvider])
+(function() {
+    'use strict';
 
-function stateProvider($stateProvider) {
+    angular
+        .module('base')
+        .config(['$stateProvider', stateProvider])
 
-    $stateProvider
-        .state('base', {
-            url: '',
-            abstract: true,
-            views: {
-                '@': {
-                    templateUrl: 'app/modules/base/views/base.html',
-                },
-                'header@base': {
-                    templateUrl: 'app/modules/base/views/header.html',
-                },
-                'sidebar@base': {
-                    templateUrl: 'app/modules/base/views/sidebar.html',
-                },
-                'footer@base': {
-                    templateUrl: 'app/modules/base/views/footer.html',
+    function stateProvider($stateProvider) {
+
+        $stateProvider
+            .state('base', {
+                url: '/base',
+                views: {
+                    '@': {
+                        templateUrl: 'app/modules/base/views/base.html',
+                    },
+                    'header@base': {
+                        templateUrl: 'app/modules/base/views/header.html',
+                    },
+                    'sidebar@base': {
+                        templateUrl: 'app/modules/base/views/sidebar.html',
+                        controller: 'BaseCtrl'
+                    },
+                    'footer@base': {
+                        templateUrl: 'app/modules/base/views/footer.html',
+                    }
                 }
-            }
-        });
-}
+            });
+    }
+
+})();
