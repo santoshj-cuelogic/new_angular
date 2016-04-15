@@ -28,7 +28,8 @@ var gulp = require('gulp'),
             'app/modules/dashboard/controllers/dashboard.controller.js',
             'app/modules/dashboard/dashboard.route.js',
             'app/app.js'
-        ]
+        ],
+        dest: './build/static'
     };
 
 /* Tasks */
@@ -37,14 +38,14 @@ gulp.task('appJs', function() {
 
     return gulp.src(filePath.appJs)
            .pipe(concat('app.js'))
-           .pipe(gulp.dest(''));
+           .pipe(gulp.dest(filePath.dest));
 });
 
 gulp.task('appJsMin', function() {
     return gulp.src(filePath.appJs)
         .pipe(concat('app.js'))
         .pipe(uglify({mangle: false}))
-        .pipe(gulp.dest(''));
+        .pipe(gulp.dest(filePath.dest));
 });
 
 /** Initialize **/

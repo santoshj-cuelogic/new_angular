@@ -1,33 +1,46 @@
-var http = require('http'),
-    fs = require('fs'),
-    url = require('url');
+'use strict';
 
-// Create a server
-http.createServer( function (request, response) {
-   // Parse the request containing file name
+var Hapi = require('hapi'),
+    server = new Hapi.Server();
 
-   var  requestUrl = (request.url == '/' || request.url == '/login') ? '/index.html' : request.url,
-        pathname = url.parse(requestUrl).pathname;
-   // Print the name of the file for which request is made.
-   console.log("Request for " + pathname + " received.");
+server.register(require('inert'), function(err) {
+    if (err) {
+        throw err;
+    }
 
-   // Read the requested file content from file system
-   fs.readFile(pathname.substr(1), function (err, data) {
-      if (err) {
-         console.log(err);
-         // HTTP Status: 404 : NOT FOUND
-         // Content Type: text/plain
-         response.writeHead(404, {'Content-Type': 'text/html'});
-      }else{
-         //Page found
-         // HTTP Status: 200 : OK
-         // Content Type: text/plain
-         response.writeHead(200, {'Content-Type': 'text/html'});
+    server.connection({ port: 3000 });
 
-         // Write the content of the file to response body
-         response.write(data.toString());
-      }
-      // Send the response body
-      response.end();
-   });
-}).listen(4000);
+    server.route([{
+            method: 'GET',
+            path: '/static/{param*}',
+            handler: {
+                directory: {
+                    path: 'build/static'
+                }
+            }
+        },
+        {
+            method: 'GET',
+            path: '/app/{param*}',
+            handler: {
+                directory: {
+                    path: 'app'
+                }
+            }
+        },
+        {
+            method: 'GET',
+            path: '/{path*}',
+            handler: function(request, reply) {
+                reply.file('./build/index.html');
+            }
+        }
+    ]);
+
+    server.start(function(err) {
+        if (err) {
+            throw err;
+        }
+        console.log('Hapi is listening to http://localhost:3000');
+    });
+});
