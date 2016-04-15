@@ -1,0 +1,65 @@
+html{
+	height: 100%;
+}
+body{
+	min-height: 100%;
+	position: relative;
+	padding: 0;
+	margin: 0;
+
+}
+header{
+	position:fixed;
+	left:0;
+	top: 0;
+	right:0;
+	height: 50px;
+	background: red;
+	padding-left: 25%;
+}
+section{
+overflow: hidden;
+padding-top: 55px;
+}
+section aside{
+	float: left;
+}
+section aside.nav{
+	width: 25%;
+	background: yellow;
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+}
+section aside.content{
+	width: 75%;
+	padding-left: 25%;
+	background: #ccc;
+}
+footer{
+	position:absolute;
+	left:0;
+	bottom: 0;
+	right:0;
+	background: green;
+}
+
+.menu {
+    border: #f00 1px solid;
+    border-right: none;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: inline-block;
+}
+
+.sub-menu {
+    border-right: #f00 1px solid;
+    display: inline-block;
+    padding: 5px;
+}
+
+.active {
+	background-color: #fff;
+}

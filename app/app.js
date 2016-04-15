@@ -7,9 +7,11 @@
         .module('kantar', [
             'ui.router',
             'ngAnimate',
+            'angularLazyImg',
 
             'login',
-            'base'
+            'base',
+            'dashboard'
         ])
         .config(['$urlRouterProvider', '$locationProvider', initializeConfigurationPhase]);
 

@@ -15,12 +15,18 @@ var gulp = require('gulp'),
             'bower_components/angular/angular.js',
             'bower_components/angular-animate/angular-animate.js',
             'bower_components/angular-ui-router/release/angular-ui-router.js',
+            'bower_components/angular-lazy-img/release/angular-lazy-img.js',
+            'app/services/base/base.service.js',
             'app/modules/base/base.index.js',
             'app/modules/base/controllers/base.controller.js',
             'app/modules/base/base.route.js',
             'app/modules/login/login.index.js',
             'app/modules/login/controllers/login.controller.js',
             'app/modules/login/login.route.js',
+            'app/directives/dashboard/dashboard.directives.js',
+            'app/modules/dashboard/dashboard.index.js',
+            'app/modules/dashboard/controllers/dashboard.controller.js',
+            'app/modules/dashboard/dashboard.route.js',
             'app/app.js'
         ]
     };
