@@ -15,6 +15,10 @@
 
     function initializeConfigurationPhase($urlRouterProvider, $locationProvider) {
         // $locationProvider.html5Mode(true);
+        // $locationProvider.html5Mode({
+        //          enabled: true,
+        //          requireBase: false
+        //   });
         $urlRouterProvider.otherwise('/login');
     }
 
