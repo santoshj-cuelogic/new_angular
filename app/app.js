@@ -8,6 +8,7 @@
             'ui.router',
             'ngAnimate',
             'angularLazyImg',
+            'config',
             'login',
             'base',
             'dashboard'
