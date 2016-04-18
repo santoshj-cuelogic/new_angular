@@ -4,7 +4,7 @@
  */
 'use strict';
 
-var gulp = require('gulp'),
+var gulp = require('gulp-param')(require('gulp'), process.argv),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     minifyCss = require('gulp-minify-css'),
@@ -19,52 +19,44 @@ var gulp = require('gulp'),
             'bower_components/angular-animate/angular-animate.js',
             'bower_components/angular-ui-router/release/angular-ui-router.js',
             'bower_components/angular-lazy-img/release/angular-lazy-img.js',
-            'app/services/base/base.service.js',
-            'app/modules/base/base.index.js',
-            'app/modules/base/controllers/base.controller.js',
-            'app/modules/base/base.route.js',
-            'app/modules/login/login.index.js',
-            'app/modules/login/controllers/login.controller.js',
-            'app/modules/login/login.route.js',
-            'app/directives/dashboard/dashboard.directives.js',
-            'app/modules/dashboard/dashboard.index.js',
-            'app/modules/dashboard/controllers/dashboard.controller.js',
-            'app/modules/dashboard/dashboard.route.js',
+            'app/**/**/*.js',
+            'app/modules/**/**/*.js',
             'app/app.js'
         ],
         dest: './build/static'
-    };
+    },
+    environmentFileNames = ['local', 'development', 'staging', 'production'];
 
 /* Tasks */
 gulp.task('appCss', function() {
-    return gulp.src(filePath.externalCss)
+    return gulp.src(filePath.appCss)
         .pipe(concat('app.css'))
         .pipe(minifyCss({
             compatibility: 'ie8'
         }))
-        .pipe(gulp.dest(filePath.dest+ '/css'));
+        .pipe(gulp.dest(filePath.dest + '/css'));
 });
 
 gulp.task('appCssMin', function() {
-    return gulp.src(filePath.externalCss)
+    return gulp.src(filePath.appCss)
         .pipe(concat('app.css'))
         .pipe(minifyCss({
             compatibility: 'ie8'
         }))
-        .pipe(gulp.dest(filePath.dest+ '/css'));
+        .pipe(gulp.dest(filePath.dest + '/css'));
 });
 
 gulp.task('appJs', function() {
 
     return gulp.src(filePath.appJs)
-           .pipe(concat('app.js'))
-           .pipe(gulp.dest(filePath.dest));
+        .pipe(concat('app.js'))
+        .pipe(gulp.dest(filePath.dest));
 });
 
 gulp.task('appJsMin', function() {
     return gulp.src(filePath.appJs)
         .pipe(concat('app.js'))
-        .pipe(uglify({mangle: false}))
+        .pipe(uglify({ mangle: false }))
         .pipe(gulp.dest(filePath.dest));
 });
 
@@ -73,10 +65,26 @@ gulp.task('default', function(callback) {
     console.log("Ooops! You will have to mention a specific task EX. gulp minify or gulp skip-minify");
 });
 
-gulp.task('skip-minify', function(callback) {
+gulp.task('addEnv', function(env, callback) {
+
+    /*If user has not provided any environment file name*/
+    if (env == undefined || env == true || (environmentFileNames.indexOf(env) == -1)) {
+        console.log('Please provide environment file name to be include i.e');
+        console.log('--env local');
+        console.log('--env development');
+        console.log('--env staging');
+        console.log('--env production');
+        return;
+    }
+
+    filePath.appJs.push('config/' + env + '.js');
+    callback();
+});
+
+gulp.task('skip-minify', ['addEnv'], function(env, callback) {
     runSequence('appJs', 'appCss', callback);
 });
 
-gulp.task('minify', function(callback) {
+gulp.task('minify', ['addEnv'], function(env, callback) {
     runSequence('appJsMin', 'appCssMin', callback);
 });
