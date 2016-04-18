@@ -11,6 +11,9 @@ var gulp = require('gulp'),
     runSequence = require('run-sequence'),
     path = require('path'),
     filePath = {
+        appCss: [
+            'assets/css/styles/app.css'
+        ],
         appJs: [
             'bower_components/angular/angular.js',
             'bower_components/angular-animate/angular-animate.js',
@@ -33,6 +36,23 @@ var gulp = require('gulp'),
     };
 
 /* Tasks */
+gulp.task('appCss', function() {
+    return gulp.src(filePath.externalCss)
+        .pipe(concat('app.css'))
+        .pipe(minifyCss({
+            compatibility: 'ie8'
+        }))
+        .pipe(gulp.dest(filePath.dest+ '/css'));
+});
+
+gulp.task('appCssMin', function() {
+    return gulp.src(filePath.externalCss)
+        .pipe(concat('app.css'))
+        .pipe(minifyCss({
+            compatibility: 'ie8'
+        }))
+        .pipe(gulp.dest(filePath.dest+ '/css'));
+});
 
 gulp.task('appJs', function() {
 
@@ -54,9 +74,9 @@ gulp.task('default', function(callback) {
 });
 
 gulp.task('skip-minify', function(callback) {
-    runSequence('appJs', callback);
+    runSequence('appJs', 'appCss', callback);
 });
 
 gulp.task('minify', function(callback) {
-    runSequence('appJsMin', callback);
+    runSequence('appJsMin', 'appCssMin', callback);
 });
