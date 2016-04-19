@@ -14,8 +14,8 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "angularjs#1.4.0",
-    "angular-animate": "1.4.0",
+    "angular": "angularjs#1.4.5",
+    "angular-animate": "1.4.5",
     "angular-ui-router": "~0.2.18",
     "bootstrap": "~3.3.6",
     "angular-lazy-img": "^1.2.2"

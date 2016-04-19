@@ -12,7 +12,7 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
     path = require('path'),
     filePath = {
         appCss: [
-            'assets/css/styles/app.css'
+            'assets/css/*.css'
         ],
         appJs: [
             'bower_components/angular/angular.js',
@@ -31,9 +31,6 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
 gulp.task('appCss', function() {
     return gulp.src(filePath.appCss)
         .pipe(concat('app.css'))
-        .pipe(minifyCss({
-            compatibility: 'ie8'
-        }))
         .pipe(gulp.dest(filePath.dest + '/css'));
 });
 
@@ -50,14 +47,14 @@ gulp.task('appJs', function() {
 
     return gulp.src(filePath.appJs)
         .pipe(concat('app.js'))
-        .pipe(gulp.dest(filePath.dest));
+        .pipe(gulp.dest(filePath.dest + '/js'));
 });
 
 gulp.task('appJsMin', function() {
     return gulp.src(filePath.appJs)
         .pipe(concat('app.js'))
         .pipe(uglify({ mangle: false }))
-        .pipe(gulp.dest(filePath.dest));
+        .pipe(gulp.dest(filePath.dest + '/js'));
 });
 
 /** Initialize **/
@@ -81,8 +78,14 @@ gulp.task('addEnv', function(env, callback) {
     callback();
 });
 
+gulp.task('watch', function() {
+  gulp.watch(filePath.appCss, ['appCss']);
+  gulp.watch(filePath.appJs, ['appJs']);
+});
+
+
 gulp.task('skip-minify', ['addEnv'], function(env, callback) {
-    runSequence('appJs', 'appCss', callback);
+    runSequence('appJs', 'appCss', 'watch', callback);
 });
 
 gulp.task('minify', ['addEnv'], function(env, callback) {
