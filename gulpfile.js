@@ -32,12 +32,14 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
     environmentFileNames = ['local', 'development', 'staging', 'production'];
 
 /* Tasks */
+/* Combine all the css files in one file */
 gulp.task('appCss', function() {
     return gulp.src(filePath.appCss)
         .pipe(concat('app.css'))
         .pipe(gulp.dest(filePath.dest + '/css'));
 });
 
+/* Combine all the css files in one file and minify it*/
 gulp.task('appCssMin', function() {
     return gulp.src(filePath.appCss)
         .pipe(concat('app.css'))
@@ -47,6 +49,7 @@ gulp.task('appCssMin', function() {
         .pipe(gulp.dest(filePath.dest + '/css'));
 });
 
+/* Combine all the js files in one file */
 gulp.task('appJs', function() {
 
     return gulp.src(filePath.appJs)
@@ -54,19 +57,7 @@ gulp.task('appJs', function() {
         .pipe(gulp.dest(filePath.dest + '/js'));
 });
 
-gulp.task('appIndexHtml', function() {
-
-    return gulp.src(filePath.indexHtml)
-        .pipe(concat('index.html'))
-        .pipe(gulp.dest('./build'));
-});
-
-gulp.task('appIndexHtmlMin', function() {
-    return gulp.src(filePath.indexHtml)
-        .pipe(htmlMin({ collapseWhitespace: true }))
-        .pipe(gulp.dest('./build'))
-});
-
+/* Combine all the js files in one file and minify it*/
 gulp.task('appJsMin', function() {
     return gulp.src(filePath.appJs)
         .pipe(concat('app.js'))
@@ -74,7 +65,22 @@ gulp.task('appJsMin', function() {
         .pipe(gulp.dest(filePath.dest + '/js'));
 });
 
+/*Get inde index html file and put it in build folder*/
+gulp.task('appIndexHtml', function() {
 
+    return gulp.src(filePath.indexHtml)
+        .pipe(concat('index.html'))
+        .pipe(gulp.dest('./build'));
+});
+
+/*Get inde index html file, minify it and put it in build folder*/
+gulp.task('appIndexHtmlMin', function() {
+    return gulp.src(filePath.indexHtml)
+        .pipe(htmlMin({ collapseWhitespace: true }))
+        .pipe(gulp.dest('./build'))
+});
+
+/*Comapre env parameter and pushed environment file as per given name in env*/
 gulp.task('addEnv', function(env, callback) {
 
     /*If user has not provided any environment file name*/
@@ -91,6 +97,7 @@ gulp.task('addEnv', function(env, callback) {
     callback();
 });
 
+/*Run server and watch for changes*/
 gulp.task('nodemon', function() {
     nodemon({
             script: 'web_server.js',
@@ -98,6 +105,7 @@ gulp.task('nodemon', function() {
         .on('start', ['watch']);
 })
 
+/*Watch for changes in file, compile it for changes has done*/
 gulp.task('watch', function() {
 
     if (filePath.env == '') {
@@ -111,15 +119,14 @@ gulp.task('watch', function() {
 
 });
 
-/** Initialize **/
-gulp.task('default', function(callback) {
-    console.log("Ooops! You will have to mention a specific task EX. gulp minify or gulp skip-minify");
-});
+/*Default task which accepts two parameter from command env (name of environment file) and minify flag for minification*/
+gulp.task('default', ['addEnv'], function(minify, callback) {
 
-gulp.task('skip-minify', ['addEnv'], function(env, callback) {
-    runSequence('appIndexHtml', 'appJs', 'appCss', 'nodemon', callback);
-});
-
-gulp.task('minify', ['addEnv'], function(env, callback) {
-    runSequence('appIndexHtmlMin', 'appJsMin', 'appCssMin', callback);
+    if (minify) {
+        //Minify all the files and run server
+        runSequence('appJsMin', 'appCssMin', 'appIndexHtmlMin', 'nodemon', callback);
+    } else {
+        //Run server without minifing the file
+        runSequence('appJs', 'appCss', 'appIndexHtml', 'nodemon', callback);
+    }
 });
