@@ -9,6 +9,8 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
     minifyCss = require('gulp-minify-css'),
     runSequence = require('run-sequence'),
     nodemon = require('gulp-nodemon'),
+    livereload = require('gulp-livereload'),
+    htmlMin = require('gulp-htmlmin'),
     path = require('path'),
     filePath = {
         appCss: [
@@ -23,6 +25,7 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
             'app/modules/**/**/*.js',
             'app/app.js'
         ],
+        indexHtml: './index.html',
         dest: './build/static',
         env: ''
     },
@@ -51,6 +54,19 @@ gulp.task('appJs', function() {
         .pipe(gulp.dest(filePath.dest + '/js'));
 });
 
+gulp.task('appIndexHtml', function() {
+
+    return gulp.src(filePath.indexHtml)
+        .pipe(concat('index.html'))
+        .pipe(gulp.dest('./build'));
+});
+
+gulp.task('appIndexHtmlMin', function() {
+    return gulp.src(filePath.indexHtml)
+        .pipe(htmlMin({ collapseWhitespace: true }))
+        .pipe(gulp.dest('./build'))
+});
+
 gulp.task('appJsMin', function() {
     return gulp.src(filePath.appJs)
         .pipe(concat('app.js'))
@@ -77,9 +93,10 @@ gulp.task('addEnv', function(env, callback) {
 
 gulp.task('nodemon', function() {
     nodemon({
-        script: 'web_server.js',
-        tasks: ['watch']
-    })
+            script: 'web_server.js',
+        })
+        .on('start', ['watch'])
+        .on('change', ['watch']);
 })
 
 gulp.task('watch', function() {
@@ -91,6 +108,7 @@ gulp.task('watch', function() {
 
     gulp.watch(filePath.appCss, ['appCss']);
     gulp.watch(filePath.appJs, ['appJs']);
+    gulp.watch(filePath.indexHtml, ['appIndexHtml']);
 
 });
 
@@ -100,9 +118,9 @@ gulp.task('default', function(callback) {
 });
 
 gulp.task('skip-minify', ['addEnv'], function(env, callback) {
-    runSequence('appJs', 'appCss', 'nodemon', callback);
+    runSequence('appIndexHtml', 'appJs', 'appCss', 'nodemon', callback);
 });
 
 gulp.task('minify', ['addEnv'], function(env, callback) {
-    runSequence('appJsMin', 'appCssMin', callback);
+    runSequence('appIndexHtmlMin', 'appJsMin', 'appCssMin', callback);
 });
