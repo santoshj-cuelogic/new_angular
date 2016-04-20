@@ -95,8 +95,7 @@ gulp.task('nodemon', function() {
     nodemon({
             script: 'web_server.js',
         })
-        .on('start', ['watch'])
-        .on('change', ['watch']);
+        .on('start', ['watch']);
 })
 
 gulp.task('watch', function() {
