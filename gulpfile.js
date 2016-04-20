@@ -3,12 +3,12 @@
  * Include dependencies
  */
 'use strict';
-
 var gulp = require('gulp-param')(require('gulp'), process.argv),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     minifyCss = require('gulp-minify-css'),
     runSequence = require('run-sequence'),
+    nodemon = require('gulp-nodemon'),
     path = require('path'),
     filePath = {
         appCss: [
@@ -23,7 +23,8 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
             'app/modules/**/**/*.js',
             'app/app.js'
         ],
-        dest: './build/static'
+        dest: './build/static',
+        env: ''
     },
     environmentFileNames = ['local', 'development', 'staging', 'production'];
 
@@ -57,10 +58,6 @@ gulp.task('appJsMin', function() {
         .pipe(gulp.dest(filePath.dest + '/js'));
 });
 
-/** Initialize **/
-gulp.task('default', function(callback) {
-    console.log("Ooops! You will have to mention a specific task EX. gulp minify or gulp skip-minify");
-});
 
 gulp.task('addEnv', function(env, callback) {
 
@@ -73,19 +70,37 @@ gulp.task('addEnv', function(env, callback) {
         console.log('--env production');
         return;
     }
-
+    filePath.env = env;
     filePath.appJs.push('config/' + env + '.js');
     callback();
 });
 
+gulp.task('nodemon', function() {
+    nodemon({
+        script: 'web_server.js',
+        tasks: ['watch']
+    })
+})
+
 gulp.task('watch', function() {
-  gulp.watch(filePath.appCss, ['appCss']);
-  gulp.watch(filePath.appJs, ['appJs']);
+
+    if (filePath.env == '') {
+        filePath.env = 'local'
+        filePath.appJs.push('config/' + filePath.env + '.js');
+    }
+
+    gulp.watch(filePath.appCss, ['appCss']);
+    gulp.watch(filePath.appJs, ['appJs']);
+
 });
 
+/** Initialize **/
+gulp.task('default', function(callback) {
+    console.log("Ooops! You will have to mention a specific task EX. gulp minify or gulp skip-minify");
+});
 
 gulp.task('skip-minify', ['addEnv'], function(env, callback) {
-    runSequence('appJs', 'appCss', 'watch', callback);
+    runSequence('appJs', 'appCss', 'nodemon', callback);
 });
 
 gulp.task('minify', ['addEnv'], function(env, callback) {
