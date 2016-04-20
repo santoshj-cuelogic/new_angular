@@ -14,6 +14,7 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
     path = require('path'),
     filePath = {
         appCss: [
+            'bower_components/bootstrap/dist/css/bootstrap.css',
             'assets/css/*.css'
         ],
         appJs: [

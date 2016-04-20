@@ -1,7 +1,8 @@
-<ul class="menu">
-    <li class="sub-menu {{subMenu.activeCls}}"  ng-repeat="subMenu in subTabMenus()">
-        <a href="">
+<ul class="nav nav-tabs" role="tablist">
+    <li class="{{subMenu.activeCls}}"  ng-repeat="subMenu in subTabMenus()">
+        <a href="Javascript:void(0);" role="tab" data-toggle="tab">
             <span>{{subMenu.tabMenu}}</span>
         </a>
     </li>       
 </ul>
+
