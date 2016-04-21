@@ -14,24 +14,30 @@ function baseService($http) {
     function getMenu() {
         var menus = {};
         return menus = {
-            'userMenu': [{
-                "name": 'Dashboard',
+            "userMenu": [{
+                "name": "Dashboard",
                 "class": "dashboard",
+                "action": "base.dashboard",
             }, {
-                "name": 'Proposals',
+                "name": "Proposals",
                 "class": "proposals",
+                "action": "javascript:void(0);",
             }, {
-                "name": 'Project',
+                "name": "Project",
                 "class": "project",
+                "action": "javascript:void(0);",
             }, {
-                "name": 'Data Mapping',
+                "name": "Data Mapping",
                 "class": "data-mapping",
+                "action": "javascript:void(0);",
             }, {
-                "name": 'Clients',
+                "name": "Clients",
                 "class": "clients",
+                "action": "javascript:void(0);",
             }, {
-                "name": 'Data Providers',
+                "name": "Data Providers",
                 "class": "data-providers",
+                "action": "javascript:void(0);",
             }]
         }
     }

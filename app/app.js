@@ -8,10 +8,12 @@
             'ui.router',
             'ngAnimate',
             'angularLazyImg',
+            'ui.bootstrap',
             'config',
             'login',
             'base',
-            'dashboard'
+            'dashboard',
+            'user'
         ])
         .config(['$urlRouterProvider', '$locationProvider', initializeConfigurationPhase]);
 

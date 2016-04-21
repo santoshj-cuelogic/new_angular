@@ -1,5 +1,9 @@
-<div class="container-fluid" ng-init="userList()">
+<div class="container-fluid paddingTP30" ng-init="userList()">
     <tab-menu tab-menu-list="subTabMenus"></tab-menu>
+    <div class="paddingTB20 clearfix">
+        <a ui-sref="base.user" class="btn btn-info pull-right" role="button">Add user</a>
+    </div>
+    
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="home">
             <table class="table table-striped">

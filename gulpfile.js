@@ -22,6 +22,7 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
             'bower_components/angular-animate/angular-animate.js',
             'bower_components/angular-ui-router/release/angular-ui-router.js',
             'bower_components/angular-lazy-img/release/angular-lazy-img.js',
+            'bower_components/angular-bootstrap/ui-bootstrap.js',
             'app/**/**/*.js',
             'app/modules/**/**/*.js',
             'app/app.js'

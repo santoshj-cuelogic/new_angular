@@ -1,8 +1,5 @@
-<div>sidebar</div>
-<div>
-    <ul>
-        <li  ng-repeat="setmenu in getMenus">
-            {{setmenu.name}}
-        </li>
-    </ul>
-</div>
+<ul>
+    <li ng-repeat="setmenu in getMenus">
+        <a ui-sref="{{setmenu.action}}">{{setmenu.name}}</a>
+    </li>
+</ul>
