@@ -27,6 +27,6 @@
     "hapi": "13.3.0",
     "inert": "3.2.0",
     "path": "0.12.7",
-    "run-sequence": "1.1.5",
+    "run-sequence": "1.1.5"
   }
 }
