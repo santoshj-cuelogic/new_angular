@@ -5,6 +5,7 @@
 'use strict';
 var gulp = require('gulp-param')(require('gulp'), process.argv),
     concat = require('gulp-concat'),
+    del = require('del'),
     uglify = require('gulp-uglify'),
     minifyCss = require('gulp-minify-css'),
     runSequence = require('run-sequence'),
@@ -29,20 +30,19 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
         ],
         indexHtml: './index.html',
         dest: './build/static',
-        env: ''
     },
     environmentFileNames = ['local', 'development', 'staging', 'production'];
 
 /* Tasks */
 /* Combine all the css files in one file */
-gulp.task('appCss', function() {
+gulp.task('appCss', ['clean:appCss'], function() {
     return gulp.src(filePath.appCss)
         .pipe(concat('app.css'))
         .pipe(gulp.dest(filePath.dest + '/css'));
 });
 
 /* Combine all the css files in one file and minify it*/
-gulp.task('appCssMin', function() {
+gulp.task('appCssMin', ['clean:appCss'], function() {
     return gulp.src(filePath.appCss)
         .pipe(concat('app.css'))
         .pipe(minifyCss({
@@ -52,7 +52,7 @@ gulp.task('appCssMin', function() {
 });
 
 /* Combine all the js files in one file */
-gulp.task('appJs', function() {
+gulp.task('appJs', ['clean:appJs'], function() {
 
     return gulp.src(filePath.appJs)
         .pipe(concat('app.js'))
@@ -60,15 +60,15 @@ gulp.task('appJs', function() {
 });
 
 /* Combine all the js files in one file and minify it*/
-gulp.task('appJsMin', function() {
+gulp.task('appJsMin', ['clean:appJs'], function() {
     return gulp.src(filePath.appJs)
         .pipe(concat('app.js'))
-        .pipe(uglify({ mangle: false }))
+        .pipe(uglify())
         .pipe(gulp.dest(filePath.dest + '/js'));
 });
 
 /*Get inde index html file and put it in build folder*/
-gulp.task('appIndexHtml', function() {
+gulp.task('appIndexHtml', ['clean:indexHtml'], function() {
 
     return gulp.src(filePath.indexHtml)
         .pipe(concat('index.html'))
@@ -76,7 +76,7 @@ gulp.task('appIndexHtml', function() {
 });
 
 /*Get inde index html file, minify it and put it in build folder*/
-gulp.task('appIndexHtmlMin', function() {
+gulp.task('appIndexHtmlMin', ['clean:indexHtml'], function() {
     return gulp.src(filePath.indexHtml)
         .pipe(htmlMin({ collapseWhitespace: true }))
         .pipe(gulp.dest('./build'))
@@ -94,41 +94,53 @@ gulp.task('addEnv', function(env, callback) {
         console.log('--env production');
         return;
     }
-    filePath.env = env;
     filePath.appJs.push('config/' + env + '.js');
     callback();
+});
+
+/*Remove index.html file*/
+gulp.task('clean:indexHtml', function() {
+    return del('./build/*.html');
+});
+
+/*Remove all js files*/
+gulp.task('clean:appJs', function() {
+    return del(filePath.dest + '/js/*.js');
+});
+
+/*Remove all css files*/
+gulp.task('clean:appCss', function(cb) {
+    return del(filePath.dest + '/css/*.css');
 });
 
 /*Run server and watch for changes*/
 gulp.task('nodemon', function() {
     nodemon({
-            script: 'web_server.js',
-        })
-        .on('start', ['watch']);
+        script: 'web_server.js',
+    });
 })
 
 /*Watch for changes in file, compile it for changes has done*/
 gulp.task('watch', function() {
 
-    if (filePath.env == '') {
-        filePath.env = 'local'
-        filePath.appJs.push('config/' + filePath.env + '.js');
-    }
-
-    gulp.watch(filePath.appCss, ['appCss']);
-    gulp.watch(filePath.appJs, ['appJs']);
-    gulp.watch(filePath.indexHtml, ['appIndexHtml']);
+    livereload.listen()
+    gulp.watch(filePath.appCss, ['appCss']).on('change', livereload.changed);
+    gulp.watch(filePath.appJs, ['appJs']).on('change', livereload.changed);
+    gulp.watch(filePath.indexHtml, ['appIndexHtml']).on('change', livereload.changed);
 
 });
+
+/*Task for removing old html/js/css files*/
+gulp.task('clean', ['clean:indexHtml', 'clean:appJs', 'clean:appCss']);
 
 /*Default task which accepts two parameter from command env (name of environment file) and minify flag for minification*/
 gulp.task('default', ['addEnv'], function(minify, callback) {
 
     if (minify) {
         //Minify all the files and run server
-        runSequence('appJsMin', 'appCssMin', 'appIndexHtmlMin', 'nodemon', callback);
+        runSequence('appJsMin', 'appCssMin', 'appIndexHtmlMin', ['watch', 'nodemon'], callback);
     } else {
         //Run server without minifing the file
-        runSequence('appJs', 'appCss', 'appIndexHtml', 'nodemon', callback);
+        runSequence('appJs', 'appCss', 'appIndexHtml', ['watch', 'nodemon'], callback);
     }
 });

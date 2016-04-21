@@ -21,23 +21,23 @@ function baseService($http) {
             }, {
                 "name": "Proposals",
                 "class": "proposals",
-                "action": "javascript:void(0);",
+                "action": "base.dashboard",
             }, {
                 "name": "Project",
                 "class": "project",
-                "action": "javascript:void(0);",
+                "action": "base.dashboard",
             }, {
                 "name": "Data Mapping",
                 "class": "data-mapping",
-                "action": "javascript:void(0);",
+                "action": "base.dashboard",
             }, {
                 "name": "Clients",
                 "class": "clients",
-                "action": "javascript:void(0);",
+                "action": "base.dashboard",
             }, {
                 "name": "Data Providers",
                 "class": "data-providers",
-                "action": "javascript:void(0);",
+                "action": "base.dashboard",
             }]
         }
     }

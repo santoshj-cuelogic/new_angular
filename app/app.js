@@ -4,7 +4,7 @@
 
     // Declare app level module which depends on views, and components
     angular
-        .module('kantar', [
+        .module('angular-client', [
             'ui.router',
             'ngAnimate',
             'angularLazyImg',
