@@ -41,7 +41,7 @@ Follow all the below steps, in sequential order, to set up your client environme
 
 ##### Step 3: Run Gulp
 
-1. `cd tandem-client/Auth/app`
+1. `cd angular-boilerplate`
 2. `sudo gulp --env development`
 
 Note: If the you wish to run diffrent environment then use- `sudo gulp --env [environment name]` (production, staging, development and local).
