@@ -86,14 +86,17 @@ gulp.task('appIndexHtmlMin', ['clean:indexHtml'], function() {
 gulp.task('addEnv', function(env, callback) {
 
     /*If user has not provided any environment file name*/
-    if (env == undefined || env == true || (environmentFileNames.indexOf(env) == -1)) {
-        console.log('Please provide environment file name to be include i.e');
+    if (env == undefined || env == true) {
+        env = 'local';
+    } else if (environmentFileNames.indexOf(env) == -1) {
+        console.log('Please provide valid environment file name to be include i.e');
         console.log('--env local');
         console.log('--env development');
         console.log('--env staging');
         console.log('--env production');
         return;
     }
+
     filePath.appJs.push('config/' + env + '.js');
     callback();
 });
@@ -118,7 +121,7 @@ gulp.task('nodemon', function() {
     nodemon({
         script: 'server.js',
     });
-})
+});
 
 /*Watch for changes in file, compile it for changes has done*/
 gulp.task('watch', function() {
