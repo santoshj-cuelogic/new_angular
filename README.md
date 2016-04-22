@@ -170,7 +170,6 @@ angular-biolerplate
 | `/gulpfile.js` | Hold functionality for instructing gulp to perform specific tasks. |
 | `/index.html` | The main core file of the application. |
 | `/package.json` | Hold all dependencies required in the application. |
-
 | `/README.md` | A help file that describes installation, configuration and other processes to get application up and running. |
 | `/server.js` | Servcer file from where the whole application is kickstarted. |
 
