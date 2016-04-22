@@ -56,25 +56,25 @@ Ref: https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubun
 
 Command:
 
-    `sudo gulp [--env <environment>] [--minify]`
+`sudo gulp [--env <environment>] [--minify]`
 
 Description:
 
-    Builds the Angular project for a specific environment by minifying all files. Final build files are placed in the `build` directory.
+Builds the Angular project for a specific environment by minifying all files. Final build files are placed in the `build` directory.
 
 Options:
     
-    [--env <environment>]
-        Build the Angular project for a specific environment. Default is *local*.
-        Ex: local, development, staging, production
+* `[--env <environment>]`
+  - Build the Angular project for a specific environment. Default is *local*.
+  - Ex: local, development, staging, production
 
-    [--minify]
-        Minify all HTML, CSS and JS files in the Angular project.
+* `[--minify]`
+  - Minify all HTML, CSS and JS files in the Angular project.
 
 Examples:
     
-    `sudo gulp --env production`
-    `sudo gulp --env staging --minify`
+* `sudo gulp --env production`
+* `sudo gulp --env staging --minify`
 
 Note: If successfully built, you will be able to access the Angular project at `http://localhost:3000`.
 
