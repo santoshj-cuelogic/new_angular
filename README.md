@@ -10,7 +10,9 @@ Follow all the below steps, in sequential order, to set up your Angular project.
 
 1. `sudo apt-get update`
 2. `sudo apt-get install git`
-    - Ref: https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-14-04
+
+ Ref: https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-14-04
+
 
 ##### Step 2: Install Node (npm)
 
