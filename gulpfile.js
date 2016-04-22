@@ -116,7 +116,7 @@ gulp.task('clean:appCss', function(cb) {
 /*Run server and watch for changes*/
 gulp.task('nodemon', function() {
     nodemon({
-        script: 'web_server.js',
+        script: 'server.js',
     });
 })
 

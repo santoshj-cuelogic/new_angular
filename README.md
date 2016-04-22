@@ -104,24 +104,24 @@ angular-biolerplate
 │    │    │     │      ├── header.html
 │    │    │     │      ├── sidebar.html
 │    │    │     │      └── footer.html
-│    │    │     ├── base.route.js
-│    │    │     └── base.index.js
+│    │    │     ├── route.js
+│    │    │     └── index.js
 │    │    │
 │    │    ├── login
 │    │    │     ├── controllers
 │    │    │     │      └── login.js
 │    │    │     ├── views
 │    │    │     │      └── login.html
-│    │    │     ├── login.route.js
-│    │    │     └── login.index.js
+│    │    │     ├── route.js
+│    │    │     └── index.js
 │    │    │
 │    │    └── dashboard
 │    │            ├── controllers
 │    │            │      └── dashboard.js
 │    │            ├── views
 │    │            │      └── dashboard.html
-│    │            ├── dashboard.route.js
-│    │            └── dashboard.index.js
+│    │            ├── route.js
+│    │            └── index.js
 │    └── app.js
 │
 ├── build
@@ -145,7 +145,7 @@ angular-biolerplate
 ├── gulpfile.js
 ├── bower.json
 ├── package.json
-└── web_server.js
+└── server.js
 
 ```
 
@@ -185,5 +185,4 @@ angular-biolerplate
 | `/gulpfile.js` |  |
 | `/index.html` | The main core file to start the application. |
 | `/package.json` | Hold all dependencies required in the application. |
-| `/README.md` | A help file that describes installation, configuration and other processes to get application up and running. |
-| `/web_server.js` |  |
+| `/server.js` |  |
