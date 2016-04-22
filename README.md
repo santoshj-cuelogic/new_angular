@@ -23,15 +23,20 @@ Ref: https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubun
 4. `sudo apt-get install -y nodejs`
 5. `sudo npm cache clean -f`
 
+*On Mac*
+
+1. Install Homebrew
+2. `brew install node`
+
 ##### Step 3: Install Bower
 
-*On Ubuntu*
+*On Ubuntu/Mac*
 
 `sudo npm install -g bower`
 
 ##### Step 4: Install Gulp
 
-*On Ubuntu*
+*On Ubuntu/Mac*
 
 `sudo npm install -g gulp`
 
