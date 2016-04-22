@@ -71,7 +71,7 @@ Reference: https://www.digitalocean.com/community/tutorials/how-to-install-git-o
 
 ***
 
-### FOLDER STRUCTURE
+### DIRECTORY STRUCTURE
 
 
 ```
@@ -149,41 +149,26 @@ angular-biolerplate
 
 ```
 
-### FOLDER STRUCTURE DESCRIPTION
+#### DIRECTORY STRUCTURE DESCRIPTION
 
 | File/Directory | Description |
 | --- | --- |
 | `/app` | The core directory of the application and it holds all modular files, directives and services files. |
-| `/app/directives` | Holds custom made directives used in the application. |
-| `/app/directives/common` |  |
+| `/app/directives` | Holds custom made directives used in the specific modules or shared across the application. |
+| `/app/directives/common` | Holds directives used across the application. |
 | `/app/modules/` | Partitioned into modular functionality, it holds views,routes and controllers |
-| `/app/modules/base` |  |
-| `/app/modules/base/controllers` |  |
-| `/app/modules/base/views` |  |
-| `/app/modules/dashboard` |  |
-| `/app/modules/dashboard/controllers` |  |
-| `/app/modules/dashboard/views` |  |
-| `/app/modules/login` |  |
-| `/app/modules/login/controllers` |  |
-| `/app/modules/login/views` |  |
-| `/app/modules/user` |  |
-| `/app/modules/user/controllers` |  |
-| `/app/modules/user/views` |  |
-| `/app/services/` |  |
+| `/app/modules/base` | The base module holds all views,routes and processes for base. <ul><li>controllers : Holds all the controllers for base module. </li><li>views: Holds all the templates (view files) for base module.</li><li>base.route.js : Holds routes that are used to access base module.</li><li>base.index.js : The main core file that initiates a module.</li></ul> |
+| `/app/services/` | Holds services used in the specific modules or shared across the application. |
 | `/app/app.js` | The main javascript file where we declare the app level module which depends on view and components. |
 | `/assets/css` | Handles the application level styles. |
 | `/assets/images` | Handles the application level images. |
 | `bower_components` | Holds all angular components required to run the application. |
-| `/build` |  |
-| `/build/index.html` |  |
-| `/build/static/app.js` |  |
-| `/build/css` |  |
-| `/build/js` |  |
+| `/build` | Holds all gulp generated files i.e js/html/css |
 | `/config` | Holds all environment specific configurable entities. |
 | `/node_modules` | Holds all npm packages required to run the application. |
 | `/bower.json` | Hold all dependencies required in the application. |
-| `/gulpfile.js` |  |
-| `/index.html` | The main core file to start the application. |
+| `/gulpfile.js` | Hold functionality for instructing gulp to perform specific tasks. |
+| `/index.html` | The main core file of the application. |
 | `/package.json` | Hold all dependencies required in the application. |
 | `/README.md` | A help file that describes installation, configuration and other processes to get application up and running. |
-| `/web_server.js` |  |
+| `/web_server.js` | Servcer file from where the whole application is kickstarted. |
