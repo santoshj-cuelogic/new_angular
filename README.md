@@ -114,12 +114,12 @@ angular-biolerplate
 │    │    │     └── index.js
 │    │    │
 │    │    └── dashboard
-│    │            ├── controllers
-│    │            │      └── dashboard.js
-│    │            ├── views
-│    │            │      └── dashboard.html
-│    │            ├── route.js
-│    │            └── index.js
+│    │          ├── controllers
+│    │          │      └── dashboard.js
+│    │          ├── views
+│    │          │      └── dashboard.html
+│    │          ├── route.js
+│    │          └── index.js
 │    └── app.js
 │
 ├── build
@@ -131,10 +131,12 @@ angular-biolerplate
 ├── assets
 │    ├── css
 │    │    └── app.css
-│    └── images
+│    └── img
 ├── config
 │    ├── local.js
-│    └── development.js
+│    ├── development.js
+│    ├── staging.js
+│    └── production.js
 │
 ├── bower_components
 ├── node_modules
