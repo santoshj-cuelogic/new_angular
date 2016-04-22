@@ -63,7 +63,7 @@ Description:
 Builds the Angular project for a specific environment by minifying all files. Final build files are placed in the `build` directory.
 
 Options:
-    
+
 * `[--env <environment>]`
   - Build the Angular project for a specific environment. Default is *local*.
   - Ex: local, development, staging, production
@@ -72,7 +72,7 @@ Options:
   - Minify all HTML, CSS and JS files in the Angular project.
 
 Examples:
-    
+
 * `sudo gulp --env production`
 * `sudo gulp --env staging --minify`
 
@@ -95,15 +95,6 @@ Note: If successfully built, you will be able to access the Angular project at `
 │   │       ├── views
 │   │       │   └── notifications.html
 │   │       └── notifications.js
-│   │
-│   ├── services
-│   │   ├── base
-│   │   │   └── base.js
-│   │   ├── common
-│   │   │   ├── security.js
-│   │   │   └── user.js
-│   │   └── login
-│   │       └── login.js
 │   │
 │   ├── modules
 │   │   ├── base
@@ -133,7 +124,21 @@ Note: If successfully built, you will be able to access the Angular project at `
 │   │       ├── route.js
 │   │       └── index.js
 │   │
+│   ├── services
+│   │   ├── base
+│   │   │   └── base.js
+│   │   ├── common
+│   │   │   ├── security.js
+│   │   │   └── user.js
+│   │   └── login
+│   │       └── login.js
+│   │
 │   └── app.js
+│
+├── assets
+│   ├── css
+│   │   └── app.css
+│   └── img
 │
 ├── build
 │   ├── css
@@ -142,24 +147,19 @@ Note: If successfully built, you will be able to access the Angular project at `
 │   │   └── app.js
 │   └── index.html
 │
-├── assets
-│   ├── css
-│   │   └── app.css
-│   └── img
-│
 ├── config
 │   ├── local.js
 │   ├── development.js
 │   ├── staging.js
 │   └── production.js
 │
+├── bower.json
 ├── bower_components
+├── package.json
 ├── node_modules
 ├── .gitignore
-├── index.html
 ├── gulpfile.js
-├── bower.json
-├── package.json
+├── index.html
 └── server.js
 
 ```
@@ -167,23 +167,24 @@ Note: If successfully built, you will be able to access the Angular project at `
 
 | File/Directory | Description |
 | --- | --- |
-| `/app` | The core directory of the application and it holds all modular files, directives and services files. |
-| `/app/directives` | Holds custom made directives used in the specific modules or shared across the application. |
-| `/app/directives/common` | Holds directives used across the application. |
-| `/app/modules/` | Partitioned into modular functionality, it holds views,routes and controllers |
-| `/app/modules/base` | The base module holds all views,routes and processes for base. <ul><li>controllers : Holds all the controllers for base module. </li><li>views: Holds all the templates (view files) for base module.</li><li>base.route.js : Holds routes that are used to access base module.</li><li>base.index.js : The main core file that initiates a module.</li></ul> |
-| `/app/services/` | Holds services used in the specific modules or shared across the application. |
-| `/app/app.js` | The main javascript file where we declare the app level module which depends on view and components. |
-| `/assets/css` | Handles the application level styles. |
-| `/assets/images` | Handles the application level images. |
-| `bower_components` | Holds all angular components required to run the application. |
-| `/build` | Holds all gulp generated files i.e js/html/css |
-| `/config` | Holds all environment specific configurable entities. |
-| `/node_modules` | Holds all npm packages required to run the application. |
-| `/bower.json` | Hold all dependencies required in the application. |
-| `/gulpfile.js` | Hold functionality for instructing gulp to perform specific tasks. |
-| `/index.html` | The main core file of the application. |
-| `/package.json` | Hold all dependencies required in the application. |
-| `/README.md` | A help file that describes installation, configuration and other processes to get application up and running. |
-| `/server.js` | Servcer file from where the whole application is kickstarted. |
+| `/app` | Core directory of the project. It has all business logic modules, directives and services. |
+| `/app/directives` | Custom-made Angular directives used and shared across different modules. |
+| `/app/modules/` | Business logic is bifurcated in to single irreducible modules. Each module in turn has routes, controllers and views. |
+| `/app/modules/<module>/controllers` | Controllers of the module it is nested within. |
+| `/app/modules/<module>/views` | HTML templates (views) of the module it is nested within. |
+| `/app/modules/<module>/route.js` | Routes (URL structure) of the module it is nested within. |
+| `/app/modules/<module>/index.js` | Helps initiate the module it is nested within. |
+| `/app/services/` | Services used in modules. One of the core responsibility of this layer is to connect with the server and fetch/push data. |
+| `/app/app.js` | Defines the application level module. |
+| `/assets/css` | Stylesheets required to style different views. |
+| `/assets/img` | Images, icons, illustrations, sprites used in the application. |
+| `/build` | Final build files which are generated post minification for a specific environment. |
+| `/config` | Environment specific configuration settings. |
+| `/bower.json` | Bower dependencies required in the application. |
+| `/bower_components` | Bower components used in the application. |
+| `/package.json` | NPM dependencies required in the application. |
+| `/node_modules` | NPM components used in the application. |
+| `/gulpfile.js` | Set of defined tasks which helps automate and enhance the application build. |
+| `/index.html` | Staring point of the application. |
+| `/server.js` | Kickstarts the application. |
 
