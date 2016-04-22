@@ -87,7 +87,7 @@ gulp.task('appIndexHtmlMin', ['clean:indexHtml'], function() {
 /*Get all images from assets folder and move it in build folder*/
 gulp.task('appImg', function() {
     return gulp.src(filePath.appImg)
-        .pipe(gulp.dest(filePath.dest + '/img'));
+        .pipe(gulp.dest(filePath.dest + '/images'));
 });
 
 /*Comapre env parameter and pushed environment file as per given name in env*/
