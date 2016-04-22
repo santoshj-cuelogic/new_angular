@@ -1,44 +1,42 @@
-#AngularJs boilerplate
+# AngularJS Boilerplate
 
 ### INSTALLATION
 
-Follow all the below steps, in sequential order, to set up your client environment with needed software and packages.
+Follow all the below steps, in sequential order, to set up your Angular project.
 
-##### Step 1: Install Git
+#### Step 1: Install Git
+
+**On Ubuntu**
 
 1. `sudo apt-get update`
 2. `sudo apt-get install git`
+    - Ref: https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-14-04
 
-Configure Git
+#### Step 2: Install Node (npm)
 
-* `git config --global user.name "Your Name"`
-* `git config --global user.email "youremail@domain.com"`
-
-OR
-
-* `nano ~/.gitconfig`
-
-Reference: https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-14-04
-
-##### Step 2: Install Node (npm)
+**On Ubuntu**
 
 1. `sudo apt-get update`
 2. `sudo apt-get upgrade`
-3. `curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -`
+3. `sudo curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -`
 4. `sudo apt-get install -y nodejs`
 5. `sudo npm cache clean -f`
 
-##### Step 3: Install Bower
+#### Step 3: Install Bower
+
+**On Ubuntu**
 
 `sudo npm install -g bower`
 
-##### Step 4: Install Gulp
+#### Step 4: Install Gulp
+
+**On Ubuntu**
 
 `sudo npm install -g gulp`
 
 ***
 
-### CODE SETUP
+### PROJECT SETUP
 
 ##### Step 1: Git cloning
 
