@@ -74,6 +74,83 @@ Reference: https://www.digitalocean.com/community/tutorials/how-to-install-git-o
 ### FOLDER STRUCTURE
 
 
+```
+angular-biolerplate
+├── app
+│    ├── directives
+│    │    ├── dashboard
+│    │    │     ├── views
+│    │    │     │     └──  tabmenu.html
+│    │    │     └── tabmenu.js
+│    │    └── common
+│    │          ├── views
+│    │          │     └──  notifications.html
+│    │          └── notifications.js
+│    ├── services
+│    │    ├── base
+│    │    │     └── base.js
+│    │    ├── common
+│    │    │     ├── security.js
+│    │    │     └── user.js
+│    │    └── login
+│    │          └──  login.js
+│    │
+│    ├── modules
+│    │    ├── base
+│    │    │     ├── controllers
+│    │    │     │      └── base.js
+│    │    │     ├── views
+│    │    │     │      ├── base.html
+│    │    │     │      ├── header.html
+│    │    │     │      ├── sidebar.html
+│    │    │     │      └── footer.html
+│    │    │     ├── base.route.js
+│    │    │     └── base.index.js
+│    │    │
+│    │    ├── login
+│    │    │     ├── controllers
+│    │    │     │      └── login.js
+│    │    │     ├── views
+│    │    │     │      └── login.html
+│    │    │     ├── login.route.js
+│    │    │     └── login.index.js
+│    │    │
+│    │    └── dashboard
+│    │            ├── controllers
+│    │            │      └── dashboard.js
+│    │            ├── views
+│    │            │      └── dashboard.html
+│    │            ├── dashboard.route.js
+│    │            └── dashboard.index.js
+│    └── app.js
+│
+├── build
+│    ├── css
+│    │    └── app.css
+│    ├── js
+│    │    └── app.js
+│    └── index.html
+├── assets
+│    ├── css
+│    │    └── app.css
+│    └── images
+├── config
+│    ├── local.js
+│    └── development.js
+│
+├── bower_components
+├── node_modules
+├── .gitignore
+├── index.html
+├── gulpfile.js
+├── bower.json
+├── package.json
+└── web_server.js
+
+```
+
+### FOLDER STRUCTURE DESCRIPTION
+
 | File/Directory | Description |
 | --- | --- |
 | `/app` | The core directory of the application and it holds all modular files, directives and services files. |
