@@ -6,7 +6,7 @@
         .controller('DashboardCtrl', ['$scope', '$state', 'baseService', DashboardCtrl]);
 
     function DashboardCtrl($scope, $state, baseService) {
-        $scope.blackSpinner = 'http://localhost/angular-boilerplate/assets/img/blackSpinner.gif';
+        $scope.blackSpinner = 'assets/img/blackSpinner.gif';
 
         $scope.userList = function() {
             //calling API and get user list

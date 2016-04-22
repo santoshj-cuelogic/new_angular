@@ -30,6 +30,15 @@ server.register(require('inert'), function(err) {
         },
         {
             method: 'GET',
+            path: '/assets/{param*}',
+            handler: {
+                directory: {
+                    path: 'assets'
+                }
+            }
+        },
+        {
+            method: 'GET',
             path: '/{path*}',
             handler: function(request, reply) {
                 reply.file('./build/index.html');
