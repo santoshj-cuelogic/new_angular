@@ -39,7 +39,9 @@ Ref: https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubun
 
 ### PROJECT SETUP
 
-##### Step 1: Clone from Git
+##### Step 1: Clone from Git (Optional)
+
+Note: If you plan to use this boilerplate for a project, then kindly click the "Download Zip" button to download the code. You can then push the downloaded code to your project's repo.
 
 1. `cd <project-directory>`
 1. `git clone https://github.com/shitala-cuelogic/angular-boilerplate.git`
