@@ -11,8 +11,7 @@ Follow all the below steps, in sequential order, to set up your Angular project.
 1. `sudo apt-get update`
 2. `sudo apt-get install git`
 
- Ref: https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-14-04
-
+Ref: https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-14-04
 
 ##### Step 2: Install Node (npm)
 
@@ -55,19 +54,29 @@ Follow all the below steps, in sequential order, to set up your Angular project.
 
 ##### Step 3: Run Gulp
 
-1. `cd angular-boilerplate`
-2.  If you want to provide different configuration file depending on different environment i.e (production, staging, development and local) then use -
+Command:
 
-    `sudo gulp --env [environment_name]`,
+`sudo gulp [--env <environment>] [--minify]`
 
-    Example `sudo gulp --env local` OR `sudo gulp --env development` etc.
+Description:
 
-3. If you want to minify files,
+Builds the Angular project for a specific environment by minifying all files. Final build files are placed in the `build` directory.
 
-    `sudo gulp --env [environment_name] --minify`
+Options:
+    
+* `[--env <environment>]`
+  - Build the Angular project for a specific environment. Default is *local*.
+  - Ex: local, development, staging, production
 
-4. Run `http://localhost:3000`
+* `[--minify]`
+  - Minify all HTML, CSS and JS files in the Angular project.
 
+Examples:
+    
+* `sudo gulp --env production`
+* `sudo gulp --env staging --minify`
+
+Note: If successfully built, you will be able to access the Angular project at `http://localhost:3000`.
 
 ***
 
@@ -76,68 +85,73 @@ Follow all the below steps, in sequential order, to set up your Angular project.
 
 ```
 ├── app
-│    ├── directives
-│    │    ├── dashboard
-│    │    │     ├── views
-│    │    │     │     └──  tabmenu.html
-│    │    │     └── tabmenu.js
-│    │    └── common
-│    │          ├── views
-│    │          │     └──  notifications.html
-│    │          └── notifications.js
-│    ├── services
-│    │    ├── base
-│    │    │     └── base.js
-│    │    ├── common
-│    │    │     ├── security.js
-│    │    │     └── user.js
-│    │    └── login
-│    │          └──  login.js
-│    │
-│    ├── modules
-│    │    ├── base
-│    │    │     ├── controllers
-│    │    │     │      └── base.js
-│    │    │     ├── views
-│    │    │     │      ├── base.html
-│    │    │     │      ├── header.html
-│    │    │     │      ├── sidebar.html
-│    │    │     │      └── footer.html
-│    │    │     ├── route.js
-│    │    │     └── index.js
-│    │    │
-│    │    ├── login
-│    │    │     ├── controllers
-│    │    │     │      └── login.js
-│    │    │     ├── views
-│    │    │     │      └── login.html
-│    │    │     ├── route.js
-│    │    │     └── index.js
-│    │    │
-│    │    └── dashboard
-│    │          ├── controllers
-│    │          │      └── dashboard.js
-│    │          ├── views
-│    │          │      └── dashboard.html
-│    │          ├── route.js
-│    │          └── index.js
-│    └── app.js
+│   │
+│   ├── directives
+│   │   ├── dashboard
+│   │   │   ├── views
+│   │   │   │   └── tabmenu.html
+│   │   │   └── tabmenu.js
+│   │   └── common
+│   │       ├── views
+│   │       │   └── notifications.html
+│   │       └── notifications.js
+│   │
+│   ├── services
+│   │   ├── base
+│   │   │   └── base.js
+│   │   ├── common
+│   │   │   ├── security.js
+│   │   │   └── user.js
+│   │   └── login
+│   │       └── login.js
+│   │
+│   ├── modules
+│   │   ├── base
+│   │   │   ├── controllers
+│   │   │   │   └── base.js
+│   │   │   ├── views
+│   │   │   │   ├── base.html
+│   │   │   │   ├── header.html
+│   │   │   │   ├── sidebar.html
+│   │   │   │   └── footer.html
+│   │   │   ├── route.js
+│   │   │   └── index.js
+│   │   │
+│   │   ├── login
+│   │   │   ├── controllers
+│   │   │   │   └── login.js
+│   │   │   ├── views
+│   │   │   │   └── login.html
+│   │   │   ├── route.js
+│   │   │   └── index.js
+│   │   │
+│   │   └── dashboard
+│   │       ├── controllers
+│   │       │   └── dashboard.js
+│   │       ├── views
+│   │       │   └── dashboard.html
+│   │       ├── route.js
+│   │       └── index.js
+│   │
+│   └── app.js
 │
 ├── build
-│    ├── css
-│    │    └── app.css
-│    ├── js
-│    │    └── app.js
-│    └── index.html
+│   ├── css
+│   │   └── app.css
+│   ├── js
+│   │   └── app.js
+│   └── index.html
+│
 ├── assets
-│    ├── css
-│    │    └── app.css
-│    └── img
+│   ├── css
+│   │   └── app.css
+│   └── img
+│
 ├── config
-│    ├── local.js
-│    ├── development.js
-│    ├── staging.js
-│    └── production.js
+│   ├── local.js
+│   ├── development.js
+│   ├── staging.js
+│   └── production.js
 │
 ├── bower_components
 ├── node_modules
