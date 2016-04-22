@@ -67,3 +67,46 @@ Reference: https://www.digitalocean.com/community/tutorials/how-to-install-git-o
     `sudo gulp --env [environment_name] --minify`
 
 4. Run `http://localhost:3000`
+
+
+***
+
+### FOLDER STRUCTURE
+
+
+| File/Directory | Description |
+| --- | --- |
+| `/app` | The core directory of the application and it holds all modular files, directives and services files. |
+| `/app/directives` | Holds custom made directives used in the application. |
+| `/app/directives/common` |  |
+| `/app/modules/` | Partitioned into modular functionality, it holds views,routes and controllers |
+| `/app/modules/base` |  |
+| `/app/modules/base/controllers` |  |
+| `/app/modules/base/views` |  |
+| `/app/modules/dashboard` |  |
+| `/app/modules/dashboard/controllers` |  |
+| `/app/modules/dashboard/views` |  |
+| `/app/modules/login` |  |
+| `/app/modules/login/controllers` |  |
+| `/app/modules/login/views` |  |
+| `/app/modules/user` |  |
+| `/app/modules/user/controllers` |  |
+| `/app/modules/user/views` |  |
+| `/app/services/` |  |
+| `/app/app.js` | The main javascript file where we declare the app level module which depends on view and components. |
+| `/assets/css` | Handles the application level styles. |
+| `/assets/images` | Handles the application level images. |
+| `bower_components` | Holds all angular components required to run the application. |
+| `/build` |  |
+| `/build/index.html` |  |
+| `/build/static/app.js` |  |
+| `/build/css` |  |
+| `/build/js` |  |
+| `/config` | Holds all environment specific configurable entities. |
+| `/node_modules` | Holds all npm packages required to run the application. |
+| `/bower.json` | Hold all dependencies required in the application. |
+| `/gulpfile.js` |  |
+| `/index.html` | The main core file to start the application. |
+| `/package.json` | Hold all dependencies required in the application. |
+| `/README.md` | A help file that describes installation, configuration and other processes to get application up and running. |
+| `/web_server.js` |  |
