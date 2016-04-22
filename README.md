@@ -38,20 +38,20 @@ Follow all the below steps, in sequential order, to set up your Angular project.
 
 ### PROJECT SETUP
 
-##### Step 1: Git cloning
+#### Step 1: Clone from Git
 
-1. `cd path-to-clone-code`
+1. `cd <project-directory>`
 1. `git clone https://github.com/shitala-cuelogic/angular-boilerplate.git`
 2. `git fetch origin [branch]`
 3. `git checkout [branch]`
 
-##### Step 2: Install NPM + Bower packages
+#### Step 2: Install NPM + Bower packages
 
 1. `cd angular-boilerplate`
 2. `sudo npm install`
 3. `sudo bower install --allow-root`
 
-##### Step 3: Run Gulp
+#### Step 3: Run Gulp
 
 1. `cd angular-boilerplate`
 2.  If you want to provide different configuration file depending on different environment i.e (production, staging, development and local) then use -
