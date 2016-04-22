@@ -85,68 +85,73 @@ Note: If successfully built, you will be able to access the Angular project at `
 
 ```
 ├── app
-│    ├── directives
-│    │    ├── dashboard
-│    │    │     ├── views
-│    │    │     │     └──  tabmenu.html
-│    │    │     └── tabmenu.js
-│    │    └── common
-│    │          ├── views
-│    │          │     └──  notifications.html
-│    │          └── notifications.js
-│    ├── services
-│    │    ├── base
-│    │    │     └── base.js
-│    │    ├── common
-│    │    │     ├── security.js
-│    │    │     └── user.js
-│    │    └── login
-│    │          └──  login.js
-│    │
-│    ├── modules
-│    │    ├── base
-│    │    │     ├── controllers
-│    │    │     │      └── base.js
-│    │    │     ├── views
-│    │    │     │      ├── base.html
-│    │    │     │      ├── header.html
-│    │    │     │      ├── sidebar.html
-│    │    │     │      └── footer.html
-│    │    │     ├── route.js
-│    │    │     └── index.js
-│    │    │
-│    │    ├── login
-│    │    │     ├── controllers
-│    │    │     │      └── login.js
-│    │    │     ├── views
-│    │    │     │      └── login.html
-│    │    │     ├── route.js
-│    │    │     └── index.js
-│    │    │
-│    │    └── dashboard
-│    │          ├── controllers
-│    │          │      └── dashboard.js
-│    │          ├── views
-│    │          │      └── dashboard.html
-│    │          ├── route.js
-│    │          └── index.js
-│    └── app.js
+│   │
+│   ├── directives
+│   │   ├── dashboard
+│   │   │   ├── views
+│   │   │   │   └── tabmenu.html
+│   │   │   └── tabmenu.js
+│   │   └── common
+│   │       ├── views
+│   │       │   └── notifications.html
+│   │       └── notifications.js
+│   │
+│   ├── services
+│   │   ├── base
+│   │   │   └── base.js
+│   │   ├── common
+│   │   │   ├── security.js
+│   │   │   └── user.js
+│   │   └── login
+│   │       └── login.js
+│   │
+│   ├── modules
+│   │   ├── base
+│   │   │   ├── controllers
+│   │   │   │   └── base.js
+│   │   │   ├── views
+│   │   │   │   ├── base.html
+│   │   │   │   ├── header.html
+│   │   │   │   ├── sidebar.html
+│   │   │   │   └── footer.html
+│   │   │   ├── route.js
+│   │   │   └── index.js
+│   │   │
+│   │   ├── login
+│   │   │   ├── controllers
+│   │   │   │   └── login.js
+│   │   │   ├── views
+│   │   │   │   └── login.html
+│   │   │   ├── route.js
+│   │   │   └── index.js
+│   │   │
+│   │   └── dashboard
+│   │       ├── controllers
+│   │       │   └── dashboard.js
+│   │       ├── views
+│   │       │   └── dashboard.html
+│   │       ├── route.js
+│   │       └── index.js
+│   │
+│   └── app.js
 │
 ├── build
-│    ├── css
-│    │    └── app.css
-│    ├── js
-│    │    └── app.js
-│    └── index.html
+│   ├── css
+│   │   └── app.css
+│   ├── js
+│   │   └── app.js
+│   └── index.html
+│
 ├── assets
-│    ├── css
-│    │    └── app.css
-│    └── img
+│   ├── css
+│   │   └── app.css
+│   └── img
+│
 ├── config
-│    ├── local.js
-│    ├── development.js
-│    ├── staging.js
-│    └── production.js
+│   ├── local.js
+│   ├── development.js
+│   ├── staging.js
+│   └── production.js
 │
 ├── bower_components
 ├── node_modules
