@@ -4,17 +4,17 @@
 
 Follow all the below steps, in sequential order, to set up your Angular project.
 
-#### Step 1: Install Git
+##### Step 1: Install Git
 
-**On Ubuntu**
+*On Ubuntu*
 
 1. `sudo apt-get update`
 2. `sudo apt-get install git`
     - Ref: https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-14-04
 
-#### Step 2: Install Node (npm)
+##### Step 2: Install Node (npm)
 
-**On Ubuntu**
+*On Ubuntu*
 
 1. `sudo apt-get update`
 2. `sudo apt-get upgrade`
@@ -22,15 +22,15 @@ Follow all the below steps, in sequential order, to set up your Angular project.
 4. `sudo apt-get install -y nodejs`
 5. `sudo npm cache clean -f`
 
-#### Step 3: Install Bower
+##### Step 3: Install Bower
 
-**On Ubuntu**
+*On Ubuntu*
 
 `sudo npm install -g bower`
 
-#### Step 4: Install Gulp
+##### Step 4: Install Gulp
 
-**On Ubuntu**
+*On Ubuntu*
 
 `sudo npm install -g gulp`
 
@@ -38,20 +38,20 @@ Follow all the below steps, in sequential order, to set up your Angular project.
 
 ### PROJECT SETUP
 
-#### Step 1: Clone from Git
+##### Step 1: Clone from Git
 
 1. `cd <project-directory>`
 1. `git clone https://github.com/shitala-cuelogic/angular-boilerplate.git`
 2. `git fetch origin [branch]`
 3. `git checkout [branch]`
 
-#### Step 2: Install NPM + Bower packages
+##### Step 2: Install NPM + Bower packages
 
 1. `cd angular-boilerplate`
 2. `sudo npm install`
 3. `sudo bower install --allow-root`
 
-#### Step 3: Run Gulp
+##### Step 3: Run Gulp
 
 1. `cd angular-boilerplate`
 2.  If you want to provide different configuration file depending on different environment i.e (production, staging, development and local) then use -
@@ -73,7 +73,6 @@ Follow all the below steps, in sequential order, to set up your Angular project.
 
 
 ```
-angular-biolerplate
 ├── app
 │    ├── directives
 │    │    ├── dashboard
@@ -149,7 +148,6 @@ angular-biolerplate
 
 ```
 
-#### DIRECTORY STRUCTURE DESCRIPTION
 
 | File/Directory | Description |
 | --- | --- |
