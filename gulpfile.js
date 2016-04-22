@@ -12,6 +12,7 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
     nodemon = require('gulp-nodemon'),
     livereload = require('gulp-livereload'),
     htmlMin = require('gulp-htmlmin'),
+    imageMin = require('gulp-imagemin'),
     path = require('path'),
     filePath = {
         appCss: [
@@ -28,8 +29,9 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
             'app/modules/**/**/*.js',
             'app/app.js'
         ],
+        appImg: 'assets/images/*',
         indexHtml: './index.html',
-        dest: './build/static',
+        dest: './build/resource',
     },
     environmentFileNames = ['local', 'development', 'staging', 'production'];
 
@@ -82,6 +84,12 @@ gulp.task('appIndexHtmlMin', ['clean:indexHtml'], function() {
         .pipe(gulp.dest('./build'))
 });
 
+/*Get all images from assets folder and move it in build folder*/
+gulp.task('appImg', function() {
+    return gulp.src(filePath.appImg)
+        .pipe(gulp.dest(filePath.dest + '/img'));
+});
+
 /*Comapre env parameter and pushed environment file as per given name in env*/
 gulp.task('addEnv', function(env, callback) {
 
@@ -116,6 +124,11 @@ gulp.task('clean:appCss', function(cb) {
     return del(filePath.dest + '/css/*.css');
 });
 
+/*Remove all css files*/
+gulp.task('clean:appImg', function(cb) {
+    return del(filePath.dest + '/img/*');
+});
+
 /*Run server and watch for changes*/
 gulp.task('nodemon', function() {
     nodemon({
@@ -130,20 +143,21 @@ gulp.task('watch', function() {
     gulp.watch(filePath.appCss, ['appCss']).on('change', livereload.changed);
     gulp.watch(filePath.appJs, ['appJs']).on('change', livereload.changed);
     gulp.watch(filePath.indexHtml, ['appIndexHtml']).on('change', livereload.changed);
+    gulp.watch(filePath.appImg, ['appImg']).on('change', livereload.changed);
 
 });
 
 /*Task for removing old html/js/css files*/
-gulp.task('clean', ['clean:indexHtml', 'clean:appJs', 'clean:appCss']);
+gulp.task('clean', ['clean:indexHtml', 'clean:appJs', 'clean:appCss', 'clean:appImg']);
 
 /*Default task which accepts two parameter from command env (name of environment file) and minify flag for minification*/
 gulp.task('default', ['addEnv'], function(minify, callback) {
 
     if (minify) {
         //Minify all the files and run server
-        runSequence('appJsMin', 'appCssMin', 'appIndexHtmlMin', ['watch', 'nodemon'], callback);
+        runSequence('appJsMin', 'appCssMin', 'appImg','appIndexHtmlMin', ['watch', 'nodemon'], callback);
     } else {
         //Run server without minifing the file
-        runSequence('appJs', 'appCss', 'appIndexHtml', ['watch', 'nodemon'], callback);
+        runSequence('appJs', 'appCss', 'appImg','appIndexHtml', ['watch', 'nodemon'], callback);
     }
 });

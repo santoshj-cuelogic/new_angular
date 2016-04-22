@@ -12,10 +12,10 @@ server.register(require('inert'), function(err) {
 
     server.route([{
             method: 'GET',
-            path: '/static/{param*}',
+            path: '/resource/{param*}',
             handler: {
                 directory: {
-                    path: 'build/static'
+                    path: 'build/resource'
                 }
             }
         },
@@ -25,15 +25,6 @@ server.register(require('inert'), function(err) {
             handler: {
                 directory: {
                     path: 'app'
-                }
-            }
-        },
-        {
-            method: 'GET',
-            path: '/assets/{param*}',
-            handler: {
-                directory: {
-                    path: 'assets'
                 }
             }
         },
