@@ -145,7 +145,7 @@ Note: If successfully built, you will be able to access the Angular project at `
 ├── assets
 │   ├── css
 │   │   └── app.css
-│   └── img
+│   └── images
 │
 ├── build
 │   ├── css
@@ -184,7 +184,7 @@ Note: If successfully built, you will be able to access the Angular project at `
 | `/app/services/` | Services used in modules. One of the core responsibility of this layer is to connect with the server and fetch/push data. |
 | `/app/app.js` | Defines the application level module. |
 | `/assets/css` | Stylesheets required to style different views. |
-| `/assets/img` | Images, icons, illustrations, sprites used in the application. |
+| `/assets/images` | Images, icons, illustrations, sprites used in the application. |
 | `/build` | Final build files which are generated post minification for a specific environment. |
 | `/config` | Environment specific configuration settings. |
 | `/bower.json` | Bower dependencies required in the application. |
