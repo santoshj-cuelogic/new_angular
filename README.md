@@ -1,4 +1,4 @@
-# AngularJS Boilerplate
+# AngularJS Boilerplate Feature
 
 Follow all the below steps, in sequential order, to set up your Angular project.
 
