@@ -202,5 +202,5 @@ Note: If successfully built, you will be able to access the Angular project at `
 1. Create a new module directory under the `app/modules/` directory like `app/modules/<module>`.
 2. Create two sub-directories `controllers` and `views` under the `app/modules/<module>/` directory.
 3. Create two JavaScript files `index.js` and `route.js` under the `app/modules/<module>/` directory.
-4. Open `app/modules/<module>/index.js`, write `angular.module('dashboard', []);` & save to create a new Angular module.
+4. Open `app/modules/<module>/index.js`, write `angular.module('<module>', []);` & save to create a new Angular module.
 5. Open `app/app.js` and inject the newly created module in the main application level module.
