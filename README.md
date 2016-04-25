@@ -1,8 +1,10 @@
 # AngularJS Boilerplate
 
-### INSTALLATION
-
 Follow all the below steps, in sequential order, to set up your Angular project.
+
+***
+
+### INSTALLATION
 
 ##### Step 1: Install Git
 
@@ -11,15 +13,13 @@ Follow all the below steps, in sequential order, to set up your Angular project.
 1. `sudo apt-get update`
 2. `sudo apt-get install git`
 
-Ref: https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-14-04
-
 ##### Step 2: Install Node (npm)
 
 *On Ubuntu*
 
 1. `sudo apt-get update`
 2. `sudo apt-get upgrade`
-3. `sudo curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -`
+3. `curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -`
 4. `sudo apt-get install -y nodejs`
 5. `sudo npm cache clean -f`
 
@@ -61,6 +61,8 @@ Note: If you plan to use this boilerplate for a project, then kindly click the "
 
 ##### Step 3: Run Gulp
 
+Prerequisite (optional): Run `sudo gulp clean` before running the below command. This will delete all files/sub-directories inside the `build` directory.
+
 Command:
 
 `sudo gulp [--env <environment>] [--minify]`
@@ -71,24 +73,23 @@ Builds the Angular project for a specific environment by minifying all files. Fi
 
 Options:
 
-* `[--env <environment>]`
-  - Build the Angular project for a specific environment. Default is *local*.
-  - Ex: local, development, staging, production
+`[--env <environment>]` <br/>
+Build the Angular project for a specific environment. Default is *local*.<br/>
+Ex: local, development, staging, production
 
-* `[--minify]`
-  - Minify all HTML, CSS and JS files in the Angular project.
+`[--minify]` <br/>
+Minify all HTML, CSS and JS files in the Angular project.
 
 Examples:
 
-* `sudo gulp --env production`
-* `sudo gulp --env staging --minify`
+`sudo gulp --env production` <br/>
+`sudo gulp --env staging --minify`
 
 Note: If successfully built, you will be able to access the Angular project at `http://localhost:3000`.
 
 ***
 
-### DIRECTORY STRUCTURE
-
+### DIRECTORY STRUCTURE 
 
 ```
 ├── app
