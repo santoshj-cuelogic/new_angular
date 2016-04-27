@@ -7,7 +7,7 @@ var gulp = require('gulp-param')(require('gulp'), process.argv),
     concat = require('gulp-concat'),
     del = require('del'),
     uglify = require('gulp-uglify'),
-    minifyCss = require('gulp-minify-css'),
+    cleanCSS = require('gulp-clean-css'),
     runSequence = require('run-sequence'),
     nodemon = require('gulp-nodemon'),
     livereload = require('gulp-livereload'),
@@ -48,7 +48,7 @@ gulp.task('appCss', ['clean:appCss'], function() {
 gulp.task('appCssMin', ['clean:appCss'], function() {
     return gulp.src(filePath.appCss)
         .pipe(concat('app.css'))
-        .pipe(minifyCss({
+        .pipe(cleanCSS({
             compatibility: 'ie8'
         }))
         .pipe(gulp.dest(filePath.dest + '/css'));
