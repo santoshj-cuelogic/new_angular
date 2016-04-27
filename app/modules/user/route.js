@@ -2,18 +2,18 @@
     'use strict';
 
     angular
-        .module('dashboard')
+        .module('user')
         .config(['$stateProvider', stateProvider])
 
     function stateProvider($stateProvider) {
 
         $stateProvider
-            .state('base.dashboard', {
-                url: '/dashboard',
+            .state('base.user', {
+                url: '/add/user',
                 views: {
                     'content': {
-                        templateUrl: 'app/modules/dashboard/views/dashboard.html',
-                        controller: 'dashboardController'
+                        templateUrl: 'app/modules/user/views/add_user.html',
+                        controller: 'userController'
                     }
                 }
             });

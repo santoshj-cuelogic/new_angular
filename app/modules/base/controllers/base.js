@@ -1,14 +1,14 @@
+'use strict';
 (function() {
-    'use strict';
 
     angular
         .module('base')
-        .controller('BaseCtrl', ['$scope', '$state', 'baseService', BaseCtrl]);
+        .controller('baseController', ['$scope', '$state', 'menuService', baseController]);
 
-    function BaseCtrl($scope, $state, baseService) {
+    function baseController($scope, $state, menuService) {
         console.log("Inside Base controller");
         //calling API and get menus
-        $scope.getMenus = baseService.getMenu().userMenu;
+        $scope.getMenus = menuService.getSidebarMenuList().userMenu;
     }
 
 })();

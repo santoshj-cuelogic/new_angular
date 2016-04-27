@@ -1,1 +1,1 @@
-angular.module('base', ['base.service']);
+angular.module('base', ['menu.service', 'sidebarMenu.directive']);

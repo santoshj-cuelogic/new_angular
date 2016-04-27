@@ -1,16 +1,16 @@
+'use strict';
 (function() {
-    'use strict';
 
     angular
         .module('dashboard')
-        .controller('DashboardCtrl', ['$scope', '$state', 'baseService', DashboardCtrl]);
+        .controller('dashboardController', ['$scope', '$state', 'dashboardService', dashboardController]);
 
-    function DashboardCtrl($scope, $state, baseService) {
+    function dashboardController($scope, $state, dashboardService) {
         $scope.blackSpinner = 'resource/images/blackSpinner.gif';
 
         $scope.userList = function() {
             //calling API and get user list
-            $scope.getUsers = baseService.getUserList().userDetails;
+            $scope.getUsers = dashboardService.getUserList().userDetails;
             $scope.subTabMenus = [{
                 'tabMenu': 'All',
                 'action': 'dashboard'
